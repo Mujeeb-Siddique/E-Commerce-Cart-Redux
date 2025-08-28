@@ -1,0 +1,170 @@
+✅ Checkout.js
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Box, Typography, TextField, Button, Paper } from "@mui/material";
+import { clearCart } from "../Store/cartSlice";
+import { useNavigate } from "react-router-dom";
+
+const Checkout = () => {
+  const cartItems = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    address: "",
+  });
+
+  const totalPrice = cartItems
+    .reduce((sum, item) => sum + item.price * item.quantity, 0)
+    .toFixed(2);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // ✅ Here we could send order to backend
+    console.log("Order Placed:", { ...formData, cartItems, totalPrice });
+
+    dispatch(clearCart()); // clear cart after order
+    navigate("/thank-you"); // navigate to confirmation page
+  };
+
+  return (
+    <Box sx={{ p: 4 }}>
+      <Paper
+        elevation={6}
+        sx={{
+          borderRadius: 4,
+          p: 4,
+          maxWidth: 600,
+          mx: "auto",
+          bgcolor: "#242424",
+          color: "white",
+        }}
+      >
+        <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
+          Checkout
+        </Typography>
+
+        {/* Order Summary */}
+        <Typography variant="h6" sx={{ mt: 2 }}>
+          Order Summary
+        </Typography>
+        <Typography variant="body1">
+          Items: {cartItems.length}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          Total: ${totalPrice}
+        </Typography>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit}>
+          <TextField
+            fullWidth
+            label="Full Name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            margin="normal"
+            required
+            sx={{ input: { color: "white" }, mb: 2 }}
+          />
+          <TextField
+            fullWidth
+            label="Email"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            margin="normal"
+            required
+            sx={{ input: { color: "white" }, mb: 2 }}
+          />
+          <TextField
+            fullWidth
+            label="Shipping Address"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            margin="normal"
+            required
+            multiline
+            rows={3}
+            sx={{ input: { color: "white" }, mb: 2 }}
+          />
+
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            size="large"
+            sx={{
+              borderRadius: 3,
+              px: 5,
+              py: 1.25,
+              fontWeight: "bold",
+              textTransform: "none",
+              boxShadow: "0px 4px 20px rgba(0,0,0,0.5)",
+              mt: 2,
+            }}
+          >
+            Place Order
+          </Button>
+        </form>
+      </Paper>
+    </Box>
+  );
+};
+
+export default Checkout;
+
+✅ ThankYou.js (confirmation page)
+import React from "react";
+import { Box, Typography, Paper, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
+const ThankYou = () => {
+  const navigate = useNavigate();
+
+  return (
+    <Box sx={{ p: 4 }}>
+      <Paper
+        elevation={6}
+        sx={{
+          borderRadius: 4,
+          p: 4,
+          maxWidth: 600,
+          mx: "auto",
+          textAlign: "center",
+          bgcolor: "#242424",
+          color: "white",
+        }}
+      >
+        <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
+          🎉 Thank You for Your Order!
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          Your order has been placed successfully. We’ll send you a confirmation email soon.
+        </Typography>
+        <Button
+          variant="contained"
+          onClick={() => navigate("/products")}
+          sx={{ borderRadius: 3, px: 4, py: 1, fontWeight: "bold" }}
+        >
+          Continue Shopping
+        </Button>
+      </Paper>
+    </Box>
+  );
+};
+
+export default ThankYou;
+
+✅ Routes (App.js)
+<Route path="/checkout" element={<Checkout />} />
+<Route path="/thank-you" element={<ThankYou />} />

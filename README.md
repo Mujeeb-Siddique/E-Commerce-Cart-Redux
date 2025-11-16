@@ -18,15 +18,6 @@ This project helped me master state management with Redux and create a scalable 
 
 ---
 
-## Screenshots
-
-![Home](./screenshots/home.png)
-![Products](./screenshots/products.png)
-![Cart](./screenshots/cart.png)
-![Checkout](./screenshots/checkout.png)
-
----
-
 ## Tech Stack
 
 - **React**: Front-end library

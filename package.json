@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/Mujeeb-Siddique/E-Commerce-Cart-Redux.git",
+  "homepage": "https://Mujeeb-Siddique.github.io/E-Commerce-Cart-Redux",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

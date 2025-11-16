@@ -1,12 +1,47 @@
-# React + Vite
+# E-Commerce Cart Redux
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=for-the-badge)](https://Mujeeb-Siddique.github.io/E-Commerce-Cart-Redux)
 
-Currently, two official plugins are available:
+A fully functional **E-Commerce Cart application** built with **React**, **Redux Toolkit**, **React Router**, **TailwindCSS**, and **MUI**.  
+This project helped me master state management with Redux and create a scalable front-end architecture for shopping cart applications.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Browse products with detailed pages
+- Add/remove items from cart
+- Persistent cart state with Redux Toolkit
+- Checkout workflow with a thank-you page
+- Responsive design using TailwindCSS & MUI
+- Smooth animations with Framer Motion
+
+---
+
+## Screenshots
+
+![Home](./screenshots/home.png)
+![Products](./screenshots/products.png)
+![Cart](./screenshots/cart.png)
+![Checkout](./screenshots/checkout.png)
+
+---
+
+## Tech Stack
+
+- **React**: Front-end library
+- **Redux Toolkit**: State management
+- **React Router v6**: Routing
+- **TailwindCSS & MUI**: Styling & components
+- **Framer Motion**: Animations
+- **Bootstrap**: Optional UI components
+
+---
+
+## Getting Started
+
+### Clone the repository
+
+```bash
+git clone https://github.com/Mujeeb-Siddique/E-Commerce-Cart-Redux.git
+cd E-Commerce-Cart-Redux
